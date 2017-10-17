@@ -1,0 +1,27 @@
+.make-grid-columns(@grid-columns){
+  .row(@index){
+    @item:~".row-@{index}";
+    .row((@index + 1),@item);
+  }
+  .row(@index,@list) when (@index =< @grid-columns){
+    @item:~".row-@{index}";
+    .row((@index+1),~"@{list},@{item}");
+    .row-@{index} {
+      .col {
+        width: 100% / @index;
+        float: left;
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+  .row(@index,@list) when (@index > @grid-columns){
+    @{list}{
+      display: block;
+    }
+  }
+  .row(1);
+}

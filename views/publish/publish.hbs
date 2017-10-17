@@ -1,0 +1,119 @@
+{{#section 'css'}}
+<link href="/static/assets/lib/kindeditor/themes/default/default.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            background-color: #f5f5f5;
+        }
+        .editor-wrap{
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding:30px  20px;
+            background-color: #fff;
+        }
+        .editor-wrap .title{
+            margin-bottom: 20px;
+        }
+        .editor-wrap .title span{
+            width: 50px;
+        }
+        .editor-wrap .title input{
+            width: 400px;
+        }
+        .editor-wrap h1{
+            font-size: 16px;
+            font-weight:bold;
+        }
+        .ke-container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        .editor-wrap select,.editor-wrap input{
+            border:1px solid #ddd;
+            padding: 6px 5px;
+        }
+        .flex-wrap{
+            display: flex;
+            display: -webkit-flex;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .label-title{
+            padding-right: 10px;
+        }
+        .set label{
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .set-item:last-child{
+            margin-top:10px;
+        }
+    </style>
+{{/section}}
+
+{{#section 'js'}}
+    <script src="/static/assets/lib/kindeditor/kindeditor-all-min.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor',{
+                width:'100%',
+                height:'500px'
+            });
+        });
+    </script>
+{{/section}}
+<div>
+
+    <form action="/publish" method="post" class="editor-wrap">
+        <h1>编辑发布</h1>
+        <div class="flex-wrap title">
+            <span class="label-title">标题：</span>
+            <input name="title" type="title" type="text" value="{{item.title}}">
+        </div>
+        <textarea id="editor" name="content" cols="100" rows="8"></textarea>
+        <div class="flex-wrap">
+            <span class="label-title">分类:</span>
+            <select name="category">
+                <option value="1">CSS</option>
+                <option value="2">Javascript</option>
+                <option value="3">HTML</option>
+                <option value="4">CSS</option>
+            </select>
+        </div>
+        <div class="flex-wrap">
+            <span class="label-title">设置:</span>
+            <div class="set">
+                <div class="set-item">
+                    <label>
+                        <input type="radio" name="comment" value="1"/>
+                        允许所有人评论
+                    </label>
+                    <label>
+                        <input type="radio" name="comment" value="2"/>
+                        不允许匿名评论
+                    </label>
+                    <label>
+                        <input type="radio" name="comment" value="3"/>
+                        不允许评论
+                    </label>
+                </div>
+                <div class="set-item">
+                    <label>
+                        <input type="checkbox" name="private" value="1"/>
+                        仅自己可见
+                    </label>
+                    <label>
+                        <input type="checkbox" name="reprint" value="1"/>
+                        禁止转载
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button style="width: 120px;margin-top: 50px" class="btn btn-primary">发布</button>
+            <button style="width: 120px;margin-top: 50px" class="btn btn-default">预览</button>
+        </div>
+    </form>
+
+</div>

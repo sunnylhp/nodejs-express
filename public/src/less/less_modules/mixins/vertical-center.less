@@ -1,0 +1,10 @@
+/*
+垂直剧中：适用于父元素固定，子元素高度不固定
+ */
+.vertical-center(){
+  display: table;
+  &>:first-child{
+    display:table-cell;
+    vertical-align: middle;
+  }
+}

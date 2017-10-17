@@ -1,0 +1,19 @@
+<div class="header">
+    <div class="header-container">
+        <div class="container">
+            <div class="h-right">
+                <a href="/login">登录</a>
+                <a href="">注册</a>
+                <a href="/publish">发布</a>
+                <span class="brand">Express</span>
+            </div>
+            <div class="nav">
+                {{#each layoutHeader.navs.links}}
+                    <a href="{{url}}">{{text}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+

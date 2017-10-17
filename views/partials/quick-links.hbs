@@ -1,0 +1,22 @@
+<div class="quick-links">
+    <div class="q-title">Guides</div>
+    <ul class="q-links">
+        {{#each menus.linkData.data}}
+        <li>
+            <a class="toggler" href="javascript:void(0);" data-popup="false">
+                <i class="icon-triangle triangle-right"></i>
+                <span>{{name}}</span>
+            </a>
+            <ul class="toggle-container toggle" data-closed="true">
+                {{#each links}}
+                    <li>
+                        <a href="" class="active">{{text}}</a>
+                    </li>
+                {{/each}}
+
+
+            </ul>
+        </li>
+        {{/each}}
+    </ul>
+</div>

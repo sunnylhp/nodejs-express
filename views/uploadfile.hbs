@@ -1,0 +1,24 @@
+<div>
+
+    <label for="">请选择文件</label>
+    <input type="file" id="files" onclick="uploadFile();" name="file">
+    <div id="result">
+        
+    </div>
+    <script>
+        function  uploadFile() {
+            var formData = new formData();
+            var files = document.getElementById('files').files;
+            var file = files[0];
+            formData.append('myfile',file);
+            var xhr = new XMLHttpRequest();
+            xhr.open('post','',true);
+            xhr.onload = function (e) {
+                if(this.status == 200){
+                    document.getElementById('result').innerHTML = this.response;
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+</div>

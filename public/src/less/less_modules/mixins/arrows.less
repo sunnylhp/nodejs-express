@@ -1,0 +1,62 @@
+/*
+参数：
+@orientation--三角形的方向
+@size---------三角形的宽度（高度是宽度的一半）
+@bg-color-----三角形的颜色
+例如：
+.triangle(top,40px,red)--箭头方向：向上，宽度是40px,高度是20px,颜色是red
+ */
+.triangle(@orientation:bottom,@size:20px,@bg-color:#333) {
+  display: inline-block;
+  border-width: @size/2;
+  border-color: @bg-color;
+  border-style: solid;
+  border-@{orientation}-width: 0;
+  & when (@orientation = bottom) or (@orientation = top){
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+  & when (@orientation = left) or (@orientation = right){
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
+
+
+/*
+参数：
+@orientation--箭头的方向
+@size---------箭头的宽度（长度是宽度的一半）
+@bg-color-----箭头的父背景色
+@color--------前头的颜色
+例如：
+..arrows(right,20px,red,green);--箭头方向：向上，宽度是40px,高度是20px,颜色是green
+ */
+.arrows(@orientation:bottom,@size:20px,@bg-color:#fff,@color:#333){
+  position: relative;
+  .triangle(@orientation,@size,@color);
+  &:before{
+    display: inline-block;
+    content: '';
+    position: absolute;
+    .triangle(@orientation,@size,@bg-color);
+    .arrows-orientation(@orientation);
+  }
+
+}
+.arrows-orientation(@orientation) when (@orientation=top){
+    left: -@size/2;
+    top:1px;
+}
+.arrows-orientation(@orientation) when (@orientation=bottom){
+    left: -@size/2;
+    bottom:1px;
+}
+.arrows-orientation(@orientation) when (@orientation=left){
+    top:-@size/2;
+    left:1px;
+}
+.arrows-orientation(@orientation) when (@orientation=right){
+    top:-@size/2;
+    right:1px;
+}

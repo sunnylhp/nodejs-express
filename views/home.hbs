@@ -1,0 +1,57 @@
+{{#section 'css'}}
+    <link href="/static/src/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="/static/src/css/home.css" rel="stylesheet" type="text/css" />
+{{/section}}
+{{#section 'js'}}
+    <script>
+        $(function () {
+            $('.toggler').on('click',function () {
+                if($(this).data('popup') == 'true'){
+                    $(this).find('.icon-triangle').removeClass('triangle-bottom').addClass('triangle-right');
+                    $(this).data('popup','false');
+                    $(this).next('.toggle-container').slideUp();
+                }else{
+                    $(this).find('.icon-triangle').removeClass('triangle-right').addClass('triangle-bottom');
+                    $(this).data('popup','true');
+                    $(this).next('.toggle-container').slideDown();
+                }
+            });
+        })
+    </script>
+{{/section}}
+<div class="container">
+    <div class="quick-links">
+        <div class="q-title">Guides</div>
+        <ul class="q-links">
+            {{#each item}}
+                <li>
+                    <a class="toggler" href="javascript:void(0);" data-popup="false">
+                        <i class="icon-triangle triangle-right"></i>
+                        <span>{{name}}</span>
+                    </a>
+
+                    <ul class="toggle-container toggle" data-closed="true">
+                        {{#each list}}
+                            <li>
+                                <a href="" class="active">{{title}}</a>
+                            </li>
+                        {{/each}}
+
+
+                    </ul>
+
+                </li>
+            {{/each}}
+        </ul>
+
+    </div>
+    <div class="quick-list">
+        <ul class="q-list">
+            {{#each listItem}}
+                <li>
+                    <a href="">{{title}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

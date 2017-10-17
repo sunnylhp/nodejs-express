@@ -1,0 +1,52 @@
+.quick-links {
+  display: block;
+  width: 200px;
+  line-height: 1.5;
+  border: 1px solid rgba(16, 165, 241, 0.23);
+  font-family: "Open Sans", arial, sans-serif;
+  color: #3b3c40;
+}
+.quick-links .q-title {
+  background-color: #f4f7f8;
+  padding: 4px 10px;
+}
+.quick-links .q-links {
+  padding-left: 20px;
+}
+.quick-links .q-links .toggler {
+  display: block;
+  position: relative;
+  padding-left: 15px;
+  font-weight: bold;
+}
+.quick-links .q-links .icon-triangle {
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+.quick-links .toggle-container > li {
+  margin-top: 5px;
+  padding-left: 20px;
+  font-size: 12px;
+  color: #000;
+}
+.quick-links .toggle {
+  display: none;
+}
+.quick-list,.quick-links{
+  float: left;
+}
+.quick-list{
+  width: 600px;
+}
+.q-list{
+  padding: 20px;
+}
+.q-list li{
+  padding: 15px 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.q-list a:hover{
+  color: #ff712a;
+  text-decoration: underline;
+}
